@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout - BLLUG</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="checkout-style.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navigation visible">
+    <div class="nav-wrapper">
+      <div class="nav-content">
+        <a href="index.html" class="nav-logo">
+          <img src="public/assets/bllug-logo.png" alt="BLLUG" class="logo-img" />
+        </a>
+        <div class="nav-desktop">
+          <a href="index.html#collection" class="nav-link">SHOP</a>
+          <a href="index.html#about" class="nav-link">ABOUT</a>
+          <a href="index.html#gallery" class="nav-link">GALLERY</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="checkout-main">
+    <div class="checkout-container">
+      <!-- Progress Steps -->
+      <div class="progress-bar">
+        <div class="progress-step active" data-step="1">
+          <div class="step-circle">1</div>
+          <span class="step-label">CONTACT</span>
+        </div>
+        <div class="progress-line"></div>
+        <div class="progress-step" data-step="2">
+          <div class="step-circle">2</div>
+          <span class="step-label">SHIPPING</span>
+        </div>
+        <div class="progress-line"></div>
+        <div class="progress-step" data-step="3">
+          <div class="step-circle">3</div>
+          <span class="step-label">PAYMENT</span>
+        </div>
+        <div class="progress-line"></div>
+        <div class="progress-step" data-step="4">
+          <div class="step-circle">4</div>
+          <span class="step-label">COMPLETE</span>
+        </div>
+      </div>
+
+      <div class="checkout-content">
+        <!-- Left Side - Form -->
+        <div class="checkout-form-section">
+          <form id="checkoutForm">
+            <!-- Step 1: Contact -->
+            <div class="form-step active" id="step-1">
+              <h1 class="checkout-title">CONTACT INFORMATION</h1>
+              <p class="checkout-subtitle">Enter your contact details to proceed</p>
+
+              <div class="form-group">
+                <label class="form-label">EMAIL ADDRESS</label>
+                <input type="email" id="email" class="form-input" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">PHONE NUMBER</label>
+                <input type="tel" id="phone" class="form-input" placeholder="+91 XXXXX XXXXX" required>
+              </div>
+            </div>
+
+            <!-- Step 2: Shipping -->
+            <div class="form-step" id="step-2">
+              <h1 class="checkout-title">SHIPPING ADDRESS</h1>
+              <p class="checkout-subtitle">Where should we deliver your order?</p>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label">FIRST NAME</label>
+                  <input type="text" id="firstName" class="form-input" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">LAST NAME</label>
+                  <input type="text" id="lastName" class="form-input" required>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">STREET ADDRESS</label>
+                <input type="text" id="address" class="form-input" required>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label">CITY</label>
+                  <input type="text" id="city" class="form-input" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">STATE</label>
+                  <input type="text" id="state" class="form-input" required>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label">POSTAL CODE</label>
+                  <input type="text" id="postalCode" class="form-input" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">COUNTRY</label>
+                  <input type="text" id="country" class="form-input" value="India" required>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 3: Payment -->
+            <div class="form-step" id="step-3">
+              <h1 class="checkout-title">PAYMENT METHOD</h1>
+              <p class="checkout-subtitle">Review your order and complete payment</p>
+
+              <div class="payment-notice">
+                <p>A secure payment link will be sent to your email address.</p>
+                <p>Complete your purchase by following the instructions in the email.</p>
+              </div>
+            </div>
+
+            <!-- Step 4: Complete -->
+            <div class="form-step" id="step-4">
+              <div class="success-container">
+                <div class="success-icon">
+                  <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                  </svg>
+                </div>
+                <h1 class="checkout-title">ORDER CONFIRMED</h1>
+                <p class="success-message">Thank you for your purchase. A payment link has been sent to <strong id="confirmEmail"></strong></p>
+                <p class="success-submessage">Please check your email and complete the payment to process your order.</p>
+                <button type="button" class="btn btn-primary" onclick="window.location.href='index.html'">RETURN TO SHOP</button>
+              </div>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="form-navigation" id="formNav">
+              <button type="button" class="btn btn-secondary" id="prevBtn" onclick="previousStep()">BACK</button>
+              <button type="button" class="btn btn-primary" id="nextBtn" onclick="nextStep()">CONTINUE</button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Right Side - Order Summary -->
+        <div class="checkout-summary-section">
+          <div class="order-summary">
+            <h2 class="summary-title">ORDER SUMMARY</h2>
+            
+            <div class="summary-items" id="summaryItems">
+              <!-- Items will be inserted here -->
+            </div>
+
+            <div class="summary-divider"></div>
+
+            <div class="summary-totals">
+              <div class="summary-row">
+                <span>SUBTOTAL</span>
+                <span id="summarySubtotal">₹0.00</span>
+              </div>
+              <div class="summary-row">
+                <span>SHIPPING</span>
+                <span>FREE</span>
+              </div>
+              <div class="summary-row summary-total">
+                <span>TOTAL</span>
+                <span id="summaryTotal">₹0.00</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="checkout-script.js"></script>
+</body>
+</html>

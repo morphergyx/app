@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BLLUG - Premium Apparel</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="intro-active">
+  <div id="root">
+    <div id="tunnel-container" class="tunnel-container">
+      <img src="public/assets/tunnel-base.jpg" alt="tunnel background" class="tunnel-background" />
+      <div class="tunnel-text">
+        <p class="tunnel-label">YEAR 2026 COLLECTION</p>
+        <p class="tunnel-hint">Scroll or tap to enter</p>
+      </div>
+    </div>
+
+    <nav id="navigation" class="navigation hidden">
+      <div class="nav-wrapper">
+        <div class="nav-content">
+            <a href="#about" class="nav-logo">
+            <img src="public/assets/bllug-logo-white.png" alt="BLLUG" class="logo-img" />
+          </a>
+          <div class="nav-desktop">
+            <a href="#launch" class="nav-link">SHOP</a>
+            <a href="#about" class="nav-link">ABOUT</a>
+            <a href="#gallery" class="nav-link">GALLERY</a>
+          </div>
+          <div class="nav-right">
+            <button class="nav-cart">
+              <svg class="cart-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <path d="M16 10a4 4 0 0 1-8 0"></path>
+              </svg>
+              <span class="cart-count">0</span>
+            </button>
+            <button id="menu-toggle" class="menu-toggle">
+              <span class="hamburger-line line1"></span>
+              <span class="hamburger-line line2"></span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div id="mobile-menu" class="mobile-menu">
+        <div class="mobile-menu-content">
+          <a href="#launch" class="mobile-nav-link">SHOP</a>
+          <a href="#about" class="mobile-nav-link">ABOUT</a>
+          <a href="#gallery" class="mobile-nav-link">GALLERY</a>
+        </div>
+      </div>
+    </nav>
+
+    <main id="main-content" class="main-content">
+
+      <!-- NEW: Full-screen image entry hero -->
+      <section class="entry-hero">
+        <div class="entry-hero-image">
+          <img src="public/assets/hero.png" alt="BLLUG 2026" />
+          <div class="entry-hero-overlay"></div>
+        </div>
+        </div>
+      </section>
+
+      <section id="about" class="hero-section">
+        <div class="hero-wrapper">
+          <div class="hero-grid">
+            <div class="hero-text">
+              <p class="hero-subtitle">YEAR 2026 COLLECTION</p>
+              <h1 class="hero-title">
+                REIMAGINING<br>DIGITAL<br><span class="hero-title-serif">Silhouettes</span>
+              </h1>
+              <p class="hero-description">
+                BLLUG represents the intersection of architectural precision and wearable art.
+                Each piece is engineered from premium technical fabrics, designed for those who
+                move between digital and physical worlds.
+              </p>
+              <div class="hero-cta">
+                <a href="#launch" class="btn btn-primary">EXPLORE COLLECTION</a>
+              <a href="#gallery" class="btn btn-secondary">VIEW LOOKBOOK</a>
+              </div>
+            </div>
+            <div class="hero-image">
+              <div class="hero-image-container">
+                <img src="public/assets/hero-reveal.jpg" alt="BLLUG Year 2026 Collection" />
+                <div class="hero-image-overlay">
+                  <div class="overlay-left">
+                    <p class="overlay-label">COORDINATES</p>
+                    <p class="overlay-value">40.7128 N, 74.0060 W</p>
+                  </div>
+                  <div class="overlay-right">
+                    <p class="overlay-label">DESTINATION</p>
+                    <p class="overlay-value">PERMANENT</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="section-divider"></div>
+      </section>
+
+      <section id="launch" class="launch-section theme-tiger">
+        <div class="launch-wrapper">
+          <span class="launch-section-index">01</span>
+          <div class="launch-grid">
+            <div class="launch-copy">
+              <p class="launch-subtitle">SERIES 01 — LIMITED</p>
+              <h2 class="launch-title">
+                TIGER
+                <span class="launch-title-serif">Apex Predator Edition</span>
+              </h2>
+              <p class="launch-description">
+                Drawn from the raw geometry of the Bengal tiger's stripe patterns, each garment in the Tiger Series is a study in controlled aggression. Premium 340gsm heavyweight cotton, pre-shrunk and enzyme-washed for immediate wearability. One design. No reruns.
+              </p>
+              <div class="launch-metrics">
+                <div class="metric-card">
+                  <span class="metric-value">340</span>
+                  <span class="metric-label">GSM WEIGHT</span>
+                </div>
+                <div class="metric-card">
+                  <span class="metric-value">48</span>
+                  <span class="metric-label">UNITS ONLY</span>
+                </div>
+                <div class="metric-card">
+                  <span class="metric-value">100%</span>
+                  <span class="metric-label">SUPIMA COTTON</span>
+                </div>
+              </div>
+              <div class="launch-sizes" aria-label="Available sizes">
+                <span class="size-option active">S</span>
+                <span class="size-option">M</span>
+                <span class="size-option">L</span>
+                <span class="size-option">XL</span>
+              </div>
+              <p class="launch-price">₹145</p>
+              <div class="launch-actions">
+                <a href="#cart-sidebar" class="btn btn-primary btn-large" data-cart-add data-name="Tiger Series" data-price="₹145" data-image="public/assets/product-tshirt-tiger.jpg">ADD TO CART</a>
+                <a href="#launch" class="btn btn-secondary btn-large">VIEW DETAILS</a>
+              </div>
+            </div>
+            <div class="launch-visual">
+              <div class="launch-visual-frame">
+                <div class="launch-visual-card">
+                  <img src="public/assets/product-tshirt-tiger.jpg" alt="Tiger Series product" class="launch-visual-image" />
+                  <span class="launch-visual-tag">TIGER SERIES / 2026</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="launch-2" class="launch-section theme-hummingbird highlight-launch">
+        <div class="launch-wrapper">
+          <span class="launch-section-index">02</span>
+          <div class="launch-grid">
+            <div class="launch-copy">
+              <p class="launch-subtitle launch-subtitle-highlight">SERIES 02 — LIMITED</p>
+              <h2 class="launch-title">
+                HUMMINGBIRD
+                <span class="launch-title-serif">Aerial Drift Edition</span>
+              </h2>
+              <p class="launch-description">
+                A lightweight construction inspired by the subtle motion of a hummingbird in flight. Feather-soft textiles, refined tailoring, and a suspended wardrobe geometry designed for the agile city wanderer.
+              </p>
+              <div class="launch-metrics">
+                <div class="metric-card">
+                  <span class="metric-value">220</span>
+                  <span class="metric-label">GSM WEIGHT</span>
+                </div>
+                <div class="metric-card">
+                  <span class="metric-value">56</span>
+                  <span class="metric-label">LIMITED RUN</span>
+                </div>
+                <div class="metric-card">
+                  <span class="metric-value">100%</span>
+                  <span class="metric-label">ORGANIC COTTON</span>
+                </div>
+              </div>
+              <div class="launch-sizes" aria-label="Available sizes">
+                <span class="size-option active">S</span>
+                <span class="size-option">M</span>
+                <span class="size-option">L</span>
+                <span class="size-option">XL</span>
+              </div>
+              <p class="launch-price">₹135</p>
+              <div class="launch-actions">
+                <a href="#cart-sidebar" class="btn btn-primary btn-large" data-cart-add data-name="Hummingbird Series" data-price="₹135" data-image="public/assets/product-tshirt-humming.jpg">ADD TO CART</a>
+                <a href="#launch-2" class="btn btn-secondary btn-large">VIEW DETAILS</a>
+              </div>
+            </div>
+            <div class="launch-visual">
+              <div class="launch-visual-frame">
+                <div class="launch-visual-card">
+                  <img src="public/assets/product-tshirt-humming.jpg" alt="Hummingbird Series product" class="launch-visual-image" />
+                  <span class="launch-visual-tag">HUMMINGBIRD SERIES / 2026</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="launch-3" class="launch-section theme-spider">
+        <div class="launch-wrapper">
+          <span class="launch-section-index">03</span>
+          <div class="launch-grid">
+            <div class="launch-copy">
+              <p class="launch-subtitle">SERIES 03 — LIMITED</p>
+              <h2 class="launch-title">
+                SPIDER
+                <span class="launch-title-serif">The Spider Series</span>
+              </h2>
+              <p class="launch-description">
+                Forged from tensile weave structures and engineered silhouettes. The Spider Edition blends motion-ready performance with urbane complexity, reaching sharp contrast through layered texture and shadow.
+              </p>
+              <div class="launch-metrics">
+                <div class="metric-card">
+                  <span class="metric-value">300</span>
+                  <span class="metric-label">GSM WEIGHT</span>
+                </div>
+                <div class="metric-card">
+                  <span class="metric-value">42</span>
+                  <span class="metric-label">UNITS ONLY</span>
+                </div>
+                <div class="metric-card">
+                  <span class="metric-value">95%</span>
+                  <span class="metric-label">TECH COTTON BLEND</span>
+                </div>
+              </div>
+              <div class="launch-sizes" aria-label="Available sizes">
+                <span class="size-option active">S</span>
+                <span class="size-option">M</span>
+                <span class="size-option">L</span>
+                <span class="size-option">XL</span>
+              </div>
+              <p class="launch-price">₹150</p>
+              <div class="launch-actions">
+                <a href="#cart-sidebar" class="btn btn-primary btn-large" data-cart-add data-name="Spider Series" data-price="₹150" data-image="public/assets/product-tshirt-spider.jpg">ADD TO CART</a>
+                <a href="#launch-3" class="btn btn-secondary btn-large">VIEW DETAILS</a>
+              </div>
+            </div>
+            <div class="launch-visual">
+              <div class="launch-visual-frame">
+                <div class="launch-visual-card">
+                  <img src="public/assets/product-tshirt-spider.jpg" alt="Spider Series product" class="launch-visual-image" />
+                  <span class="launch-visual-tag">SPIDER SERIES / 2026</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="launch-4" class="launch-section theme-phantom">
+        <div class="launch-wrapper">
+          <span class="launch-section-index">04</span>
+          <div class="launch-grid">
+            <div class="launch-copy">
+              <p class="launch-subtitle">SERIES 04 — LIMITED</p>
+              <h2 class="launch-title">
+                HEADLINE
+                <span class="launch-title-serif">Wear The Edition</span>
+              </h2>
+              <p class="launch-description">
+                A study in contrast and concealment, built for late-night city rituals. Premium weight, matte finishes, and an elevated fit designed to move seamlessly from dusk to dawn.
+              </p>
+              <div class="launch-metrics">
+                <div class="metric-card">
+                  <span class="metric-value">320</span>
+                  <span class="metric-label">GSM WEIGHT</span>
+                </div>
+                <div class="metric-card">
+                  <span class="metric-value">36</span>
+                  <span class="metric-label">UNITS ONLY</span>
+                </div>
+                <div class="metric-card">
+                  <span class="metric-value">98%</span>
+                  <span class="metric-label">PERFORMANCE COTTON</span>
+                </div>
+              </div>
+              <div class="launch-sizes" aria-label="Available sizes">
+                <span class="size-option active">S</span>
+                <span class="size-option">M</span>
+                <span class="size-option">L</span>
+                <span class="size-option">XL</span>
+              </div>
+              <p class="launch-price">₹155</p>
+              <div class="launch-actions">
+                <a href="#cart-sidebar" class="btn btn-primary btn-large" data-cart-add data-name="Headline Series" data-price="₹155" data-image="public/assets/product-tshirt-headline-3.jpg">ADD TO CART</a>
+                <a href="#launch-4" class="btn btn-secondary btn-large">VIEW DETAILS</a>
+              </div>
+            </div>
+            <div class="launch-visual">
+              <div class="launch-visual-frame">
+                <div class="launch-visual-card launch-image-carousel" data-launch-carousel>
+                  <div class="launch-carousel-track">
+                    <img src="public/assets/product-tshirt-headline-3.jpg" alt="Headline Series front view" class="launch-visual-image active" />
+                    <img src="public/assets/product-tshirt-headline-2.jpg" alt="Headline Series alternate view" class="launch-visual-image" />
+                    <img src="public/assets/product-tshirt-headline-4.jpg" alt="Headline Series detail view" class="launch-visual-image" />
+                  </div>
+                  <button class="launch-carousel-arrow launch-carousel-prev" type="button" aria-label="Previous Headline image" data-carousel-prev>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="m15 18-6-6 6-6"></path>
+                    </svg>
+                  </button>
+                  <button class="launch-carousel-arrow launch-carousel-next" type="button" aria-label="Next Headline image" data-carousel-next>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="m9 18 6-6-6-6"></path>
+                    </svg>
+                  </button>
+                  <span class="launch-visual-tag">HEADLINE SERIES / 2026</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="gallery" class="gallery-section">
+        <div class="gallery-wrapper">
+          <div class="gallery-header">
+            <p class="section-label">ARCHIVE 001-004</p>
+            <h2 class="section-title">The Permanent Collection</h2>
+          </div>
+          <div class="gallery-content">
+            <div class="gallery-carousel-container">
+              <div class="gallery-carousel" id="gallery-carousel"></div>
+            </div>
+            <div class="gallery-data" id="gallery-data"></div>
+          </div>
+        </div>
+      </section>
+
+      <footer class="footer-section">
+        <div class="footer-main">
+          <div class="footer-wrapper">
+            <div class="footer-newsletter">
+              <h2 class="footer-title">Shop the<br>Permanent Collection</h2>
+              <p class="footer-description">
+                Join the archive. Receive early access to limited releases,
+                exclusive lookbooks, and material research notes.
+              </p>
+              <form class="newsletter-form" id="newsletter-form">
+                <input
+                  type="email"
+                  placeholder="ENTER EMAIL"
+                  class="newsletter-input"
+                  id="newsletter-input"
+                  required
+                />
+                <button type="submit" class="newsletter-btn">SUBMIT</button>
+              </form>
+            </div>
+            <div class="footer-links">
+              <div class="footer-column">
+                <p class="footer-column-title">SHOP</p>
+                <ul>
+                  <li><a href="#launch" class="footer-link">All Products</a></li>
+                  <li><a href="#" class="footer-link">Tees</a></li>
+                  <li><a href="#" class="footer-link">Accessories</a></li>
+                  <li><a href="#" class="footer-link">Gift Cards</a></li>
+                </ul>
+              </div>
+              <div class="footer-column">
+                <p class="footer-column-title">INFORMATION</p>
+                <ul>
+                  <li><a href="#" class="footer-link">About</a></li>
+                  <li><a href="#" class="footer-link">Shipping</a></li>
+                  <li><a href="#" class="footer-link">Returns</a></li>
+                  <li><a href="#" class="footer-link">Contact</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <div class="footer-bottom-wrapper">
+            <div class="footer-left">
+              <img src="public/assets/bllug-logo-white.png" alt="BLLUG" class="footer-logo" />
+              <p class="footer-copyright">© 2026 BLLUG. ALL RIGHTS RESERVED.</p>
+            </div>
+            <div class="footer-right">
+              <a href="#" class="footer-legal">PRIVACY</a>
+              <a href="#" class="footer-legal">TERMS</a>
+              <a href="#" class="footer-legal">COOKIES</a>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </main>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1/dist/lenis.min.js"></script>
+  <script src="script.js"></script>
+
+    <!-- Cart Sidebar -->
+  <div id="cart-sidebar" class="cart-sidebar">
+    <div class="cart-overlay"></div>
+    <div class="cart-panel">
+      <div class="cart-header">
+        <h2 class="cart-title">YOUR CART</h2>
+        <button class="cart-close" id="cart-close">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+      
+      <div class="cart-empty" id="cart-empty">
+        <p class="cart-empty-text">YOUR CART IS EMPTY</p>
+        <p class="cart-empty-subtext">Add items to get started</p>
+      </div>
+      
+      <div class="cart-items" id="cart-items"></div>
+      
+      <div class="cart-footer" id="cart-footer">
+        <div class="cart-subtotal">
+          <span class="cart-subtotal-label">SUBTOTAL</span>
+          <span class="cart-subtotal-amount" id="cart-subtotal">₹0</span>
+        </div>
+        <button class="cart-checkout-btn" onclick="window.location.href='checkout.html'">PROCEED TO CHECKOUT</button>
+        <p class="cart-footer-note">Shipping and taxes calculated at checkout</p>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
