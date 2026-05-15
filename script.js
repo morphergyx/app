@@ -1,34 +1,34 @@
 const galleryProducts = [
   {
     name: 'The Headline Series',
-    price: 185,
+    price: 2049,
     material: '100% Organic Cotton / 280 GSM',
-    image: 'public/assets/product-tshirt-headline.jpg',
-    detail: 'public/assets/gallery-1.jpg',
+    image: 'public/assets/product-tshirt-headline-1.jpg',
+    detail: 'public/assets/product-tshirt-headline-1.jpg',
     note: 'A clean daily silhouette with architectural shoulder structure and a crisp drape.',
   },
   {
     name: 'The Tiger Series',
-    price: 210,
+    price: 2049,
     material: 'Japanese Mercerized Cotton',
     image: 'public/assets/product-tshirt-tiger.jpg',
-    detail: 'public/assets/gallery-2.jpg',
+    detail: 'public/assets/product-tshirt-tiger.jpg',
     note: 'High contrast graphics sit over a dense cotton body built for repeated wear.',
   },
   {
     name: 'The Hummingbird Series',
-    price: 245,
+    price: 2049,
     material: 'Technical Modal Blend',
-    image: 'public/assets/product-tshirt-humming.jpg',
-    detail: 'public/assets/gallery-3.jpg',
+    image: 'public/assets/product-tshirt-humming-1.jpg',
+    detail: 'public/assets/product-tshirt-humming-1.jpg',
     note: 'A softer technical hand feel with a close neckline and subtle dimensional print.',
   },
   {
     name: 'The Spider Series',
-    price: 195,
+    price: 2049,
     material: 'Heavyweight Ring-Spun',
     image: 'public/assets/product-tshirt-spider.jpg',
-    detail: 'public/assets/gallery-4.jpg',
+    detail: 'public/assets/product-tshirt-spider.jpg',
     note: 'The campaign anchor piece, styled for the permanent collection archive.',
   },
 ];
@@ -487,10 +487,30 @@ function setupLaunchImageCarousels() {
     if (activeIndex < 0) activeIndex = 0;
     let pointerStartX = null;
 
+    const dotContainer = document.createElement('div');
+    dotContainer.className = 'launch-carousel-dots';
+    dotContainer.setAttribute('aria-label', 'Carousel image pagination');
+    const dots = images.map((_, dotIndex) => {
+      const dot = document.createElement('button');
+      dot.type = 'button';
+      dot.className = 'launch-carousel-dot';
+      dot.setAttribute('aria-label', `Show image ${dotIndex + 1}`);
+      dot.addEventListener('click', (event) => {
+        event.stopPropagation();
+        setActiveImage(dotIndex);
+      });
+      dotContainer.appendChild(dot);
+      return dot;
+    });
+    carousel.appendChild(dotContainer);
+
     function setActiveImage(index) {
       activeIndex = (index + images.length) % images.length;
       images.forEach((image, imageIndex) => {
         image.classList.toggle('active', imageIndex === activeIndex);
+      });
+      dots.forEach((dot, dotIndex) => {
+        dot.classList.toggle('active', dotIndex === activeIndex);
       });
     }
 
@@ -498,17 +518,54 @@ function setupLaunchImageCarousels() {
       setActiveImage(activeIndex - 1);
     }
 
+    let previewTimeout = null;
+    let previewActive = false;
+
+    function clearPreview() {
+      if (previewTimeout) {
+        clearTimeout(previewTimeout);
+        previewTimeout = null;
+      }
+      previewActive = false;
+    }
+
+    function playPreview() {
+      if (previewActive || images.length < 2) return;
+      previewActive = true;
+      const baseIndex = activeIndex;
+      const previewIndex = (activeIndex + 1) % images.length;
+      setActiveImage(previewIndex);
+      previewTimeout = window.setTimeout(() => {
+        setActiveImage(baseIndex);
+        previewActive = false;
+      }, 900);
+    }
+
+    const visibilityObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.target === carousel && entry.isIntersecting && entry.intersectionRatio >= 0.35) {
+          playPreview();
+        }
+      });
+    }, {
+      threshold: [0.35],
+    });
+    visibilityObserver.observe(carousel);
+
     function showNext() {
+      clearPreview();
       setActiveImage(activeIndex + 1);
     }
 
     prevButton.addEventListener('click', (event) => {
       event.stopPropagation();
+      clearPreview();
       showPrevious();
     });
 
     nextButton.addEventListener('click', (event) => {
       event.stopPropagation();
+      clearPreview();
       showNext();
     });
 
@@ -726,6 +783,46 @@ function setupSmoothScroll() {
   window.startLenis = function () {};
 }
 
+function setupSizeSelectors() {
+  document.querySelectorAll('.launch-sizes').forEach((container) => {
+    const buttons = Array.from(container.querySelectorAll('.size-option'));
+    buttons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const wasActive = button.classList.contains('active');
+        
+        if (wasActive) {
+          // Deselect if already selected
+          button.classList.remove('active');
+          button.setAttribute('aria-pressed', 'false');
+        } else {
+          // Select this button and deselect others
+          buttons.forEach((option) => {
+            option.classList.toggle('active', option === button);
+            option.setAttribute('aria-pressed', option === button ? 'true' : 'false');
+          });
+        }
+        
+        const addButton = container.closest('.launch-copy-body')?.querySelector('[data-cart-add]');
+        if (addButton) {
+          const hasSelection = container.querySelector('.size-option.active');
+          if (hasSelection) {
+            addButton.classList.remove('disabled');
+            addButton.removeAttribute('aria-disabled');
+          } else {
+            addButton.classList.add('disabled');
+            addButton.setAttribute('aria-disabled', 'true');
+          }
+        }
+      });
+    });
+  });
+}
+
+function getSelectedSize(button) {
+  const section = button.closest('.launch-copy-body');
+  return section?.querySelector('.size-option.active')?.dataset.size || '';
+}
+
 let cart;
 
 function init() {
@@ -758,6 +855,7 @@ function init() {
   const tunnel = new TunnelEffect();
   tunnel.init();
   setupLaunchImageCarousels();
+  setupSizeSelectors();
   const galleryCarousel = new GalleryCarousel();
   setupNewsletter();
 
@@ -807,10 +905,16 @@ class ShoppingCart {
       const launchButton = e.target.closest('[data-cart-add]');
       if (launchButton) {
         e.preventDefault();
+        const selectedSize = getSelectedSize(launchButton);
+        if (!selectedSize) {
+          alert('Please select a size before adding this item to the cart.');
+          return;
+        }
         this.addItem({
           name: launchButton.dataset.name,
           price: launchButton.dataset.price,
           image: launchButton.dataset.image,
+          size: selectedSize,
         }, launchButton);
         return;
       }
@@ -916,6 +1020,7 @@ class ShoppingCart {
             <button class="cart-item-remove" onclick="cart.removeItem(${item.id})">REMOVE</button>
           </div>
           <p class="cart-item-material">PREMIUM COTTON</p>
+          ${item.size ? `<p class="cart-item-size">SIZE: ${item.size}</p>` : ''}
           <div class="cart-item-footer">
             <div class="cart-item-quantity">
               <button class="cart-item-qty-btn" onclick="cart.updateQuantity(${item.id}, -1)">−</button>
