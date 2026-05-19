@@ -83,6 +83,7 @@ function getCurrentProduct() {
 
 function renderProduct() {
   const product = getCurrentProduct();
+  let activeImageIndex = 0;
 
   const heroImage = document.getElementById('productHeroImage');
   const thumbList = document.getElementById('productThumbList');
@@ -105,20 +106,49 @@ function renderProduct() {
   productFabric.textContent = product.fabric;
   thumbList.innerHTML = '';
 
+  const showProductImage = (index) => {
+    activeImageIndex = (index + product.images.length) % product.images.length;
+    const src = product.images[activeImageIndex];
+
+    heroImage.src = src;
+    heroImage.alt = `${product.name} gallery image ${activeImageIndex + 1}`;
+    document.querySelectorAll('.product-thumb').forEach((thumb, thumbIndex) => {
+      thumb.classList.toggle('active', thumbIndex === activeImageIndex);
+      thumb.setAttribute('aria-pressed', thumbIndex === activeImageIndex ? 'true' : 'false');
+    });
+  };
+
   product.images.forEach((src, index) => {
     const button = document.createElement('button');
     button.type = 'button';
     button.className = `product-thumb ${index === 0 ? 'active' : ''}`;
     button.setAttribute('aria-label', `Show image ${index + 1}`);
+    button.setAttribute('aria-pressed', index === 0 ? 'true' : 'false');
     button.innerHTML = `<img src="${src}" alt="Thumbnail ${index + 1}" />`;
-    button.addEventListener('click', () => {
-      heroImage.src = src;
-      heroImage.alt = `${product.name} gallery image ${index + 1}`;
-      document.querySelectorAll('.product-thumb').forEach((thumb) => thumb.classList.remove('active'));
-      button.classList.add('active');
-    });
+    button.addEventListener('click', () => showProductImage(index));
     thumbList.appendChild(button);
   });
+
+  let touchStartX = 0;
+  let touchStartY = 0;
+
+  heroImage.addEventListener('touchstart', (event) => {
+    const touch = event.changedTouches[0];
+    touchStartX = touch.clientX;
+    touchStartY = touch.clientY;
+  }, { passive: true });
+
+  heroImage.addEventListener('touchend', (event) => {
+    const touch = event.changedTouches[0];
+    const deltaX = touch.clientX - touchStartX;
+    const deltaY = touch.clientY - touchStartY;
+
+    if (Math.abs(deltaX) < 45 || Math.abs(deltaX) < Math.abs(deltaY)) {
+      return;
+    }
+
+    showProductImage(activeImageIndex + (deltaX < 0 ? 1 : -1));
+  }, { passive: true });
 }
 
 function getSelectedProductSize() {

@@ -1777,6 +1777,10 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: inherit;
 }
 
+.launch-image-carousel {
+  touch-action: pan-y;
+}
+
 @media (min-width: 1024px) {
   .launch-visual-card {
     width: min(100%, 420px);
@@ -1839,6 +1843,14 @@ h1, h2, h3, h4, h5, h6 {
 
 @media (hover: hover) and (pointer: fine) {
   .launch-image-carousel:hover .launch-carousel-arrow {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(-50%) scale(1);
+  }
+}
+
+@media (hover: none), (pointer: coarse) {
+  .launch-carousel-arrow {
     opacity: 1;
     pointer-events: auto;
     transform: translateY(-50%) scale(1);
@@ -2284,7 +2296,7 @@ h1, h2, h3, h4, h5, h6 {
 .footer-wrapper,
 .footer-bottom-wrapper {
   position: relative;
-  z-index: 1;
+  z-index: 0;
 }
 
 .footer-main {
@@ -2681,38 +2693,86 @@ h1, h2, h3, h4, h5, h6 {
 @media (max-width: 900px) {
   .product-view-grid {
     grid-template-columns: 100%;
+    gap: 16px;
+  }
+
+  .product-thumbs {
+    order: 1;
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    padding: 2px 2px 8px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .product-thumb {
+    flex: 0 0 72px;
+    border-radius: 14px;
+    scroll-snap-align: start;
+  }
+
+  .product-thumb.active {
+    transform: translateY(-1px);
+  }
+
+  .product-thumb img {
+    aspect-ratio: 1;
+    height: 68px;
+    object-fit: cover;
+  }
+
+  .product-gallery {
+    order: 2;
+  }
+
+  .product-info {
+    order: 3;
+    justify-content: stretch;
   }
 
   .product-gallery-card {
-    height: auto;
+    height: clamp(380px, 58vh, 540px);
     min-height: 0;
+    border-radius: 22px;
   }
 
   .product-gallery-image {
-    height: auto;
+    height: 100%;
+    touch-action: pan-y;
+    user-select: none;
   }
 
   .product-page-header-inner {
     flex-direction: column;
     align-items: flex-start;
   }
-
-  .product-info {
-    justify-content: stretch;
-  }
 }
 
 @media (max-width: 680px) {
   .product-view-main {
-    padding: 24px 16px 60px;
+    padding: 78px 12px 48px;
   }
 
-  .product-gallery-image {
-    height: 56vh;
+  .product-view-grid {
+    gap: 12px;
+  }
+
+  .product-thumb {
+    flex-basis: 64px;
+  }
+
+  .product-thumb img {
+    height: 60px;
+  }
+
+  .product-gallery-card {
+    height: clamp(340px, 54vh, 500px);
   }
 
   .product-info-card {
-    padding: 24px;
+    border-radius: 22px;
+    padding: 20px;
   }
 
   .product-actions-panel {

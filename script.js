@@ -486,6 +486,8 @@ function setupLaunchImageCarousels() {
     let activeIndex = images.findIndex((image) => image.classList.contains('active'));
     if (activeIndex < 0) activeIndex = 0;
     let pointerStartX = null;
+    let touchStartX = null;
+    let touchStartY = null;
 
     const dotContainer = document.createElement('div');
     dotContainer.className = 'launch-carousel-dots';
@@ -597,6 +599,30 @@ function setupLaunchImageCarousels() {
         showNext();
       }
     });
+
+    carousel.addEventListener('touchstart', (event) => {
+      const touch = event.changedTouches[0];
+      touchStartX = touch.clientX;
+      touchStartY = touch.clientY;
+    }, { passive: true });
+
+    carousel.addEventListener('touchend', (event) => {
+      if (touchStartX === null || touchStartY === null) return;
+      const touch = event.changedTouches[0];
+      const distanceX = touch.clientX - touchStartX;
+      const distanceY = touch.clientY - touchStartY;
+      touchStartX = null;
+      touchStartY = null;
+
+      if (Math.abs(distanceX) < 42 || Math.abs(distanceX) < Math.abs(distanceY)) return;
+
+      clearPreview();
+      if (distanceX > 0) {
+        showPrevious();
+      } else {
+        showNext();
+      }
+    }, { passive: true });
 
     carousel.setAttribute('tabindex', '0');
     setActiveImage(activeIndex);
