@@ -60,7 +60,10 @@
       <!-- NEW: Full-screen image entry hero -->
       <section class="entry-hero">
         <div class="entry-hero-image">
-          <img src="public/assets/hero-1.png" alt="BLLUG 2026" />
+          <picture>
+            <source media="(max-width: 767px)" srcset="public/assets/hero-mobile-portrait.png" />
+            <img src="public/assets/hero-1.png" alt="BLLUG 2026" />
+          </picture>
           <div class="entry-hero-overlay"></div>
         </div>
         </div>
@@ -149,7 +152,7 @@
               <p class="launch-price">₹2049</p>
               <div class="launch-actions">
                 <a href="#cart-sidebar" class="btn btn-primary btn-large" data-cart-add data-name="Tiger Series" data-price="₹2049" data-image="public/assets/product-tshirt-tiger.jpg">ADD TO CART</a>
-                <a href="#launch" class="btn btn-secondary btn-large">VIEW DETAILS</a>
+                <a href="product.html?product=tiger" class="btn btn-secondary btn-large">VIEW DETAILS</a>
               </div>
             </div>
             <div class="launch-visual">
@@ -209,7 +212,7 @@
               <p class="launch-price">₹2049</p>
               <div class="launch-actions">
                 <a href="#cart-sidebar" class="btn btn-primary btn-large" data-cart-add data-name="Hummingbird Series" data-price="₹2049" data-image="public/assets/product-tshirt-humming-1.jpg">ADD TO CART</a>
-                <a href="#launch-2" class="btn btn-secondary btn-large">VIEW DETAILS</a>
+                <a href="product.html?product=hummingbird" class="btn btn-secondary btn-large">VIEW DETAILS</a>
               </div>
             </div>
             <div class="launch-visual">
@@ -269,7 +272,7 @@
               <p class="launch-price">₹2049</p>
               <div class="launch-actions">
                 <a href="#cart-sidebar" class="btn btn-primary btn-large" data-cart-add data-name="Spider Series" data-price="₹2049" data-image="public/assets/product-tshirt-spider.jpg">ADD TO CART</a>
-                <a href="#launch-3" class="btn btn-secondary btn-large">VIEW DETAILS</a>
+                <a href="product.html?product=spider" class="btn btn-secondary btn-large">VIEW DETAILS</a>
               </div>
             </div>
             <div class="launch-visual">
@@ -296,8 +299,22 @@
             </div>
             <div class="launch-visual">
               <div class="launch-visual-frame">
-                <div class="launch-visual-card">
-                  <img src="public/assets/product-tshirt-headline-3.jpg" alt="Headline Series product" class="launch-visual-image" />
+                <div class="launch-visual-card launch-image-carousel" data-launch-carousel>
+                  <div class="launch-carousel-track">
+                    <img src="public/assets/product-tshirt-headline-3.jpg" alt="Headline Series front view" class="launch-visual-image active" />
+                    <img src="public/assets/product-tshirt-headline-2.jpg" alt="Headline Series alternate view" class="launch-visual-image" />
+                    <img src="public/assets/product-tshirt-headline-4.jpg" alt="Headline Series detail view" class="launch-visual-image" />
+                  </div>
+                  <button class="launch-carousel-arrow launch-carousel-prev" type="button" aria-label="Previous Headline image" data-carousel-prev>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="m15 18-6-6 6-6"></path>
+                    </svg>
+                  </button>
+                  <button class="launch-carousel-arrow launch-carousel-next" type="button" aria-label="Next Headline image" data-carousel-next>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="m9 18 6-6-6-6"></path>
+                    </svg>
+                  </button>
                 </div>
               </div>
             </div>
@@ -329,28 +346,7 @@
               <p class="launch-price">₹2049</p>
               <div class="launch-actions">
                 <a href="#cart-sidebar" class="btn btn-primary btn-large" data-cart-add data-name="Headline Series" data-price="₹2049" data-image="public/assets/product-tshirt-headline-3.jpg">ADD TO CART</a>
-                <a href="#launch-4" class="btn btn-secondary btn-large">VIEW DETAILS</a>
-              </div>
-            </div>
-            <div class="launch-visual">
-              <div class="launch-visual-frame">
-                <div class="launch-visual-card launch-image-carousel" data-launch-carousel>
-                  <div class="launch-carousel-track">
-                    <img src="public/assets/product-tshirt-headline-3.jpg" alt="Headline Series front view" class="launch-visual-image active" />
-                    <img src="public/assets/product-tshirt-headline-2.jpg" alt="Headline Series alternate view" class="launch-visual-image" />
-                    <img src="public/assets/product-tshirt-headline-4.jpg" alt="Headline Series detail view" class="launch-visual-image" />
-                  </div>
-                  <button class="launch-carousel-arrow launch-carousel-prev" type="button" aria-label="Previous Headline image" data-carousel-prev>
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                      <path d="m15 18-6-6 6-6"></path>
-                    </svg>
-                  </button>
-                  <button class="launch-carousel-arrow launch-carousel-next" type="button" aria-label="Next Headline image" data-carousel-next>
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                      <path d="m9 18 6-6-6-6"></path>
-                    </svg>
-                  </button>
-                </div>
+                <a href="product.html?product=headline" class="btn btn-secondary btn-large">VIEW DETAILS</a>
               </div>
             </div>
           </div>
