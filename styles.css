@@ -644,14 +644,24 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @media (max-width: 900px) {
+  .hero-section {
+    min-height: auto;
+  }
+
   .hero-wrapper {
     align-items: flex-end;
-    min-height: 92vh;
-    padding: 96px 20px 52px;
+    min-height: 86vh;
+    padding: 92px 24px 48px;
+  }
+
+  .hero-grid,
+  .hero-text {
+    width: 100%;
+    max-width: 560px;
   }
 
   .hero-bg-image {
-    object-position: 66% center;
+    object-position: 58% center;
   }
 
   .hero-bg-wash {
@@ -661,22 +671,25 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   .hero-title {
-    font-size: clamp(3.25rem, 13vw, 6.5rem);
+    font-size: clamp(3.25rem, 11.5vw, 5.4rem);
+    max-width: 8.5ch;
+    overflow-wrap: normal;
   }
 
   .hero-description {
     max-width: 420px;
+    font-size: 14px;
   }
 }
 
 @media (max-width: 560px) {
   .hero-wrapper {
-    min-height: 88vh;
-    padding: 92px 16px 42px;
+    min-height: 86vh;
+    padding: 92px 16px 36px;
   }
 
   .hero-bg-image {
-    object-position: 70% center;
+    object-position: 58% center;
   }
 
   .hero-bg-wash {
@@ -688,25 +701,29 @@ h1, h2, h3, h4, h5, h6 {
   .hero-subtitle {
     font-size: 10px;
     gap: 12px;
-    margin-bottom: 20px;
-  }
-
-  .hero-subtitle::after {
-    width: 42px;
-  }
-
-  .hero-title {
-    font-size: clamp(3rem, 18vw, 4.85rem);
+    letter-spacing: 0.16em;
     margin-bottom: 18px;
   }
 
+  .hero-subtitle::after {
+    width: 34px;
+  }
+
+  .hero-title {
+    font-size: clamp(2.85rem, 15vw, 4.15rem);
+    max-width: 7.6ch;
+    margin-bottom: 16px;
+  }
+
   .hero-title-serif {
-    font-size: 0.46em;
+    font-size: 0.44em;
+    max-width: 100%;
   }
 
   .hero-description {
     font-size: 13px;
-    max-width: 330px;
+    line-height: 1.5;
+    max-width: min(100%, 340px);
     margin-bottom: 22px;
   }
 
@@ -721,6 +738,29 @@ h1, h2, h3, h4, h5, h6 {
 
   .hero-text::after {
     display: none;
+  }
+}
+
+@media (max-width: 380px) {
+  .hero-wrapper {
+    padding-inline: 14px;
+  }
+
+  .hero-subtitle {
+    font-size: 9px;
+    gap: 10px;
+  }
+
+  .hero-subtitle::after {
+    width: 26px;
+  }
+
+  .hero-title {
+    font-size: clamp(2.55rem, 14vw, 3.25rem);
+  }
+
+  .hero-description {
+    font-size: 12px;
   }
 }
 
